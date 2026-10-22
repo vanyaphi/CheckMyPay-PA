@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Get help | CheckMyPay PA</title>
+  <meta name="description" content="Where Pennsylvania workers can file a wage complaint or find free legal help, plus answers to common questions.">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="help" data-title="title.help">
+  <a class="skip-link" href="#main" data-i18n="skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero">
+      <div class="container help-hero">
+        <div>
+          <p class="eyebrow" data-i18n="help.eyebrow"></p>
+          <h1 class="page-title" data-i18n="help.h1"></h1>
+          <p class="page-lead" data-i18n="help.lead"></p>
+        </div>
+        <!-- The helpline, always in view near the top -->
+        <aside class="helpline" aria-labelledby="helpline-h">
+          <h2 class="helpline-title" id="helpline-h" data-i18n="help.callout.title"></h2>
+          <p data-i18n="help.callout.body"></p>
+          <a class="helpline-number" id="helpline-number" href="#"></a>
+          <p class="helpline-hours" data-i18n="help.callout.hours"></p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Resource groups, built from resources.js by help.js -->
+    <section class="section section-tight">
+      <div class="container" id="resource-groups"></div>
+    </section>
+
+    <!-- FAQ, built from i18n.js by help.js -->
+    <section class="section section-cream" aria-labelledby="faq-h">
+      <div class="container faq-layout">
+        <div class="faq-intro">
+          <p class="eyebrow" data-i18n="help.faq.eyebrow"></p>
+          <h2 class="section-title" id="faq-h" data-i18n="help.faq.h2"></h2>
+        </div>
+        <div id="faq"></div>
+      </div>
+    </section>
+
+    <section class="cta-band" data-block="cta"></section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <noscript><p class="noscript">CheckMyPay PA needs JavaScript turned on to work. / CheckMyPay PA necesita JavaScript para funcionar.</p></noscript>
+
+  <script src="js/rules.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/resources.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/help.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Check my pay | CheckMyPay PA</title>
+  <meta name="description" content="Check your hours and pay against Pennsylvania's minimum wage and overtime laws.">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="check" data-title="title.check" class="page-check">
+  <a class="skip-link" href="#main" data-i18n="skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <section class="calc-hero">
+      <div class="container calc-hero-inner">
+        <h1 class="page-title" data-i18n="check.h1"></h1>
+        <p class="page-lead" data-i18n="check.lead"></p>
+        <p class="calc-private"><span class="lock" aria-hidden="true"></span><span data-i18n="check.private"></span></p>
+      </div>
+    </section>
+
+    <div class="container calc-layout">
+      <!-- Progress through the three steps -->
+      <nav class="stepper" data-i18n-attr="aria-label:steps.label" id="stepper">
+        <p class="stepper-count" id="step-count"></p>
+        <ol>
+          <li data-step="1"><span class="stepper-num" aria-hidden="true">1</span><span data-i18n="step.1"></span></li>
+          <li data-step="2"><span class="stepper-num" aria-hidden="true">2</span><span data-i18n="step.2"></span></li>
+          <li data-step="3"><span class="stepper-num" aria-hidden="true">3</span><span data-i18n="step.3"></span></li>
+        </ol>
+      </nav>
+
+      <div class="calc-main">
+        <form id="calc-form" class="calc-card" novalidate>
+          <!-- Shown when an answer needs another look; announced by screen readers -->
+          <div class="error-summary" id="error-summary" role="alert" hidden></div>
+
+          <!-- ============================== STEP 1: your job -->
+          <div class="step" id="step-1" data-step="1">
+            <h2 class="step-title" tabindex="-1" data-i18n="step.1"></h2>
+
+            <fieldset class="field-set" id="fs-state">
+              <legend data-i18n="s1.state.legend"></legend>
+              <div class="tiles tiles-2">
+                <div class="tile"><input class="tile-input" type="radio" name="state" id="state-pa" value="PA"><label for="state-pa" data-i18n="s1.state.pa"></label></div>
+                <div class="tile"><input class="tile-input" type="radio" name="state" id="state-other" value="other"><label for="state-other" data-i18n="s1.state.other"></label></div>
+              </div>
+              <p class="field-error" id="err-state"></p>
+            </fieldset>
+
+            <div id="pa-questions">
+              <fieldset class="field-set" id="fs-work">
+                <legend data-i18n="s1.work.legend"></legend>
+                <div class="tiles tiles-3">
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-restaurant" value="restaurant"><label for="work-restaurant" data-i18n="work.restaurant"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-retail" value="retail"><label for="work-retail" data-i18n="work.retail"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-construction" value="construction"><label for="work-construction" data-i18n="work.construction"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-cleaning" value="cleaning"><label for="work-cleaning" data-i18n="work.cleaning"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-warehouse" value="warehouse"><label for="work-warehouse" data-i18n="work.warehouse"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-health" value="health"><label for="work-health" data-i18n="work.health"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-farm" value="farm"><label for="work-farm" data-i18n="work.farm"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-household" value="household"><label for="work-household" data-i18n="work.household"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="workType" id="work-other" value="other"><label for="work-other" data-i18n="work.other"></label></div>
+                </div>
+                <p class="field-error" id="err-workType"></p>
+              </fieldset>
+
+              <fieldset class="field-set" id="fs-contractor">
+                <legend data-i18n="s1.contractor.legend"></legend>
+                <div class="tiles tiles-2">
+                  <div class="tile"><input class="tile-input" type="radio" name="contractor" id="contractor-yes" value="yes"><label for="contractor-yes" data-i18n="common.yes"></label></div>
+                  <div class="tile"><input class="tile-input" type="radio" name="contractor" id="contractor-no" value="no"><label for="contractor-no" data-i18n="common.no"></label></div>
+                </div>
+                <p class="field-error" id="err-contractor"></p>
+              </fieldset>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn btn-gold btn-lg" data-action="next" data-i18n="btn.next"></button>
+            </div>
+          </div>
+
+          <!-- ============================== STEP 2: how you're paid -->
+          <div class="step" id="step-2" data-step="2" hidden>
+            <h2 class="step-title" tabindex="-1" data-i18n="step.2"></h2>
+
+            <fieldset class="field-set" id="fs-payType">
+              <legend data-i18n="s2.pay.legend"></legend>
+              <div class="tiles tiles-2">
+                <div class="tile tile-rich"><input class="tile-input" type="radio" name="payType" id="pay-hourly" value="hourly"><label for="pay-hourly"><strong data-i18n="pay.hourly"></strong><span data-i18n="pay.hourlyHint"></span></label></div>
+                <div class="tile tile-rich"><input class="tile-input" type="radio" name="payType" id="pay-tipped" value="tipped"><label for="pay-tipped"><strong data-i18n="pay.tipped"></strong><span data-i18n="pay.tippedHint"></span></label></div>
+                <div class="tile tile-rich"><input class="tile-input" type="radio" name="payType" id="pay-salary" value="salary"><label for="pay-salary"><strong data-i18n="pay.salary"></strong><span data-i18n="pay.salaryHint"></span></label></div>
+                <div class="tile tile-rich"><input class="tile-input" type="radio" name="payType" id="pay-flat" value="flat"><label for="pay-flat"><strong data-i18n="pay.flat"></strong><span data-i18n="pay.flatHint"></span></label></div>
+              </div>
+              <p class="field-error" id="err-payType"></p>
+            </fieldset>
+
+            <!-- Hourly or tipped: the rate -->
+            <div class="field" id="field-rate" hidden>
+              <label for="rate" id="rate-label"></label>
+              <p class="field-hint" id="rate-hint" hidden></p>
+              <div class="money-input"><span aria-hidden="true">$</span><input id="rate" name="rate" type="text" inputmode="decimal" autocomplete="off" aria-describedby="rate-hint err-rate"></div>
+              <p class="field-error" id="err-rate"></p>
+            </div>
+
+            <!-- Salary -->
+            <div class="field" id="field-salary" hidden>
+              <label for="salary" data-i18n="s2.salary"></label>
+              <p class="field-hint" id="salary-hint" data-i18n="s2.salaryHint"></p>
+              <div class="money-input"><span aria-hidden="true">$</span><input id="salary" name="salary" type="text" inputmode="decimal" autocomplete="off" aria-describedby="salary-hint err-salary"></div>
+              <p class="field-error" id="err-salary"></p>
+            </div>
+
+            <!-- Flat or piece rate -->
+            <fieldset class="field-set" id="fs-flatKind" hidden>
+              <legend data-i18n="s2.flat.legend"></legend>
+              <div class="tiles tiles-2">
+                <div class="tile"><input class="tile-input" type="radio" name="flatKind" id="flat-day" value="day"><label for="flat-day" data-i18n="flat.day"></label></div>
+                <div class="tile"><input class="tile-input" type="radio" name="flatKind" id="flat-piece" value="piece"><label for="flat-piece" data-i18n="flat.piece"></label></div>
+              </div>
+              <p class="field-hint" data-i18n="s2.flatHint"></p>
+              <p class="field-error" id="err-flatKind"></p>
+            </fieldset>
+
+            <div class="step-actions">
+              <button type="button" class="btn btn-ghost btn-lg" data-action="back" data-i18n="btn.back"></button>
+              <button type="button" class="btn btn-gold btn-lg" data-action="next" data-i18n="btn.next"></button>
+            </div>
+          </div>
+
+          <!-- ============================== STEP 3: hours and pay -->
+          <div class="step" id="step-3" data-step="3" hidden>
+            <h2 class="step-title" tabindex="-1" data-i18n="step.3"></h2>
+
+            <fieldset class="field-set">
+              <legend data-i18n="s3.mode.legend"></legend>
+              <div class="tiles tiles-2">
+                <div class="tile tile-rich"><input class="tile-input" type="radio" name="mode" id="mode-weekly" value="weekly" checked><label for="mode-weekly"><strong data-i18n="mode.weekly"></strong><span data-i18n="mode.weeklyHint"></span></label></div>
+                <div class="tile tile-rich"><input class="tile-input" type="radio" name="mode" id="mode-shifts" value="shifts"><label for="mode-shifts"><strong data-i18n="mode.shifts"></strong><span data-i18n="mode.shiftsHint"></span></label></div>
+              </div>
+            </fieldset>
+
+            <!-- Weekly totals -->
+            <div id="weekly-panel">
+              <p class="info-note" data-i18n="s3.biweekly"></p>
+              <div id="week-list"></div>
+              <button type="button" class="btn btn-ghost btn-add" id="add-week"><span aria-hidden="true">+</span> <span data-i18n="week.add"></span></button>
+              <p class="field-hint" id="week-max" hidden></p>
+            </div>
+
+            <!-- Shifts -->
+            <div id="shift-panel" hidden>
+              <div class="field field-inline">
+                <label for="week-start" data-i18n="shifts.weekStart"></label>
+                <select id="week-start" aria-describedby="week-start-hint">
+                  <option value="1" data-i18n="day.1"></option>
+                  <option value="2" data-i18n="day.2"></option>
+                  <option value="3" data-i18n="day.3"></option>
+                  <option value="4" data-i18n="day.4"></option>
+                  <option value="5" data-i18n="day.5"></option>
+                  <option value="6" data-i18n="day.6"></option>
+                  <option value="0" data-i18n="day.0"></option>
+                </select>
+                <p class="field-hint" id="week-start-hint" data-i18n="shifts.weekStartHint"></p>
+              </div>
+              <div id="shift-list"></div>
+              <button type="button" class="btn btn-ghost btn-add" id="add-shift"><span aria-hidden="true">+</span> <span data-i18n="shift.add"></span></button>
+              <p class="field-hint" data-i18n="shift.addHint"></p>
+              <p class="field-error" id="err-shifts"></p>
+
+              <div class="shift-weeks">
+                <h3 class="sub-title" data-i18n="shifts.weeksH"></h3>
+                <p class="field-hint" id="shift-weeks-hint"></p>
+                <div id="shift-week-list"></div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn btn-ghost btn-lg" data-action="back" data-i18n="btn.back"></button>
+              <button type="button" class="btn btn-gold btn-lg" data-action="calculate" data-i18n="btn.result"></button>
+            </div>
+          </div>
+        </form>
+
+        <!-- ============================== RESULT (built by check.js) -->
+        <section class="result" id="result" hidden aria-labelledby="result-h"></section>
+
+        <!-- ============================== SUMMARY to print -->
+        <section class="calc-card summary" id="summary" hidden aria-labelledby="summary-h">
+          <h2 class="step-title" id="summary-h" tabindex="-1" data-i18n="sum.h"></h2>
+          <p class="field-hint" data-i18n="sum.lead"></p>
+          <div class="summary-grid">
+            <div class="field"><label for="sum-name" data-i18n="sum.name"></label><input id="sum-name" type="text" autocomplete="off"></div>
+            <div class="field"><label for="sum-job" data-i18n="sum.job"></label><input id="sum-job" type="text" autocomplete="off"></div>
+            <div class="field"><label for="sum-employer" data-i18n="sum.employer"></label><input id="sum-employer" type="text" autocomplete="off"></div>
+            <div class="field"><label for="sum-dates" data-i18n="sum.dates"></label><input id="sum-dates" type="text" autocomplete="off"></div>
+            <div class="field field-wide"><label for="sum-address" data-i18n="sum.address"></label><input id="sum-address" type="text" autocomplete="off"></div>
+            <div class="field field-wide">
+              <label for="sum-other" data-i18n="sum.other"></label>
+              <p class="field-hint" id="sum-other-hint" data-i18n="sum.otherHint"></p>
+              <textarea id="sum-other" rows="4" aria-describedby="sum-other-hint"></textarea>
+            </div>
+            <fieldset class="field-set field-wide">
+              <legend data-i18n="sum.docs"></legend>
+              <div class="checks">
+                <label class="check"><input type="checkbox" name="docs" value="stubs"><span data-i18n="docs.stubs"></span></label>
+                <label class="check"><input type="checkbox" name="docs" value="bank"><span data-i18n="docs.bank"></span></label>
+                <label class="check"><input type="checkbox" name="docs" value="schedule"><span data-i18n="docs.schedule"></span></label>
+                <label class="check"><input type="checkbox" name="docs" value="texts"><span data-i18n="docs.texts"></span></label>
+                <label class="check"><input type="checkbox" name="docs" value="coworkers"><span data-i18n="docs.coworkers"></span></label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="step-actions">
+            <button type="button" class="btn btn-ghost btn-lg" id="summary-back" data-i18n="sum.back"></button>
+            <button type="button" class="btn btn-gold btn-lg" id="summary-print" data-i18n="sum.print"></button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <!-- The only thing that prints. Built by check.js from the summary fields. -->
+  <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
+
+  <noscript><p class="noscript">CheckMyPay PA needs JavaScript turned on to work. / CheckMyPay PA necesita JavaScript para funcionar.</p></noscript>
+
+  <script src="js/rules.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/resources.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/shifts.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/check.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only files from this site may load. No outside requests of any kind. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>CheckMyPay PA</title>
+  <meta name="description" content="A free, private, bilingual tool that helps Pennsylvania workers check whether they may have been underpaid.">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="home" data-title="title.home">
+  <a class="skip-link" href="#main" data-i18n="skip"></a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" tabindex="-1">
+    <!-- Hero: the question, the button, and an example pay stub -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="home.eyebrow"></p>
+          <h1 class="hero-title" data-i18n="home.h1"></h1>
+          <p class="hero-lead" data-i18n="home.lead"></p>
+          <div class="hero-actions">
+            <a class="btn btn-dark btn-xl" href="check.html" data-i18n="home.cta"></a>
+            <a class="text-link text-link-dark" href="wage-theft.html" data-i18n="home.cta2"></a>
+          </div>
+          <p class="hero-reassure"><span class="lock" aria-hidden="true"></span><span data-i18n="home.reassure"></span></p>
+        </div>
+
+        <!-- Example pay stub, made with HTML and CSS only -->
+        <figure class="stub" aria-labelledby="stub-label">
+          <div class="stub-top">
+            <p class="stub-label" id="stub-label" data-i18n="stub.label"></p>
+          </div>
+          <dl class="stub-rows">
+            <div class="stub-row"><dt data-i18n="stub.rate"></dt><dd data-i18n="stub.rateVal"></dd></div>
+            <div class="stub-row"><dt data-i18n="stub.hours"></dt><dd data-i18n="stub.hoursVal"></dd></div>
+            <div class="stub-row"><dt data-i18n="stub.paid"></dt><dd data-i18n="stub.paidVal"></dd></div>
+            <div class="stub-row stub-should"><dt data-i18n="stub.should"></dt><dd data-i18n="stub.shouldVal"></dd></div>
+          </dl>
+          <div class="stub-short">
+            <span data-i18n="stub.short"></span>
+            <strong data-i18n="stub.shortVal"></strong>
+          </div>
+          <figcaption class="stub-note" data-i18n="stub.note"></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Statistics band (filled by layout.js) -->
+    <section class="stats-band" data-block="stats" aria-labelledby="stats-h"></section>
+
+    <!-- What is wage theft, in short -->
+    <section class="section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow" data-i18n="home.wt.eyebrow"></p>
+          <h2 class="section-title" data-i18n="home.wt.h2"></h2>
+          <p class="section-lead" data-i18n="home.wt.body"></p>
+          <a class="text-link" href="wage-theft.html" data-i18n="home.wt.link"></a>
+        </div>
+        <ul class="forms-list">
+          <li><span class="forms-num" aria-hidden="true">01</span><span data-i18n="form.1.title"></span></li>
+          <li><span class="forms-num" aria-hidden="true">02</span><span data-i18n="form.2.title"></span></li>
+          <li><span class="forms-num" aria-hidden="true">03</span><span data-i18n="form.3.title"></span></li>
+          <li><span class="forms-num" aria-hidden="true">04</span><span data-i18n="form.4.title"></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-cream">
+      <div class="container">
+        <p class="eyebrow" data-i18n="home.how.eyebrow"></p>
+        <h2 class="section-title" data-i18n="home.how.h2"></h2>
+        <ol class="steps-row">
+          <li class="step-card">
+            <span class="step-num" aria-hidden="true">1</span>
+            <h3 data-i18n="how.1.title"></h3>
+            <p data-i18n="how.1.body"></p>
+          </li>
+          <li class="step-card">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3 data-i18n="how.2.title"></h3>
+            <p data-i18n="how.2.body"></p>
+          </li>
+          <li class="step-card">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3 data-i18n="how.3.title"></h3>
+            <p data-i18n="how.3.body"></p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- What this checks -->
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow" data-i18n="home.checks.eyebrow"></p>
+        <h2 class="section-title" data-i18n="home.checks.h2"></h2>
+        <ul class="check-cards">
+          <li class="check-card">
+            <span class="check-badge" aria-hidden="true" data-i18n="checks.min.badge"></span>
+            <h3 data-i18n="checks.min.title"></h3>
+            <p data-i18n="checks.min.body"></p>
+          </li>
+          <li class="check-card">
+            <span class="check-badge" aria-hidden="true" data-i18n="checks.ot.badge"></span>
+            <h3 data-i18n="checks.ot.title"></h3>
+            <p data-i18n="checks.ot.body"></p>
+          </li>
+          <li class="check-card">
+            <span class="check-badge" aria-hidden="true" data-i18n="checks.tip.badge"></span>
+            <h3 data-i18n="checks.tip.title"></h3>
+            <p data-i18n="checks.tip.body"></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- What makes it different -->
+    <section class="section section-ink">
+      <div class="container">
+        <p class="eyebrow eyebrow-gold" data-i18n="home.diff.eyebrow"></p>
+        <h2 class="section-title" data-i18n="home.diff.h2"></h2>
+        <ul class="diff-grid">
+          <li><h3 data-i18n="diff.private.title"></h3><p data-i18n="diff.private.body"></p></li>
+          <li><h3 data-i18n="diff.device.title"></h3><p data-i18n="diff.device.body"></p></li>
+          <li><h3 data-i18n="diff.lang.title"></h3><p data-i18n="diff.lang.body"></p></li>
+          <li><h3 data-i18n="diff.pa.title"></h3><p data-i18n="diff.pa.body"></p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Limits -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="note-panel">
+          <p class="eyebrow" data-i18n="home.limits.eyebrow"></p>
+          <p class="note-panel-body" data-i18n="home.limits.body"></p>
+          <a class="text-link" href="about.html" data-i18n="home.limits.link"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing call to action (filled by layout.js) -->
+    <section class="cta-band" data-block="cta"></section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <noscript><p class="noscript">CheckMyPay PA needs JavaScript turned on to work. / CheckMyPay PA necesita JavaScript para funcionar.</p></noscript>
+
+  <script src="js/rules.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/resources.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>
