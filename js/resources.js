@@ -86,9 +86,67 @@
         checked: null
       },
 
-      // ADD LOCAL PITTSBURGH GROUPS HERE. Copy this template, remove the //,
-      // and fill it in. Use group: 'legal' for legal aid, 'centers' for
-      // worker centers.
+      // Pittsburgh area. Details were copied from each group's own website on
+      // 2026-10-24. VERIFY BEFORE LAUNCH: call each number, then set `checked`.
+      {
+        group: 'legal',
+        name: { en: 'Justice at Work PA', es: 'Justice at Work PA' },
+        description: {
+          en: 'Free legal help for low-wage workers across Pennsylvania with unpaid wages and other problems at work. Intake staff speak English and Spanish.',
+          es: 'Ayuda legal gratuita para trabajadores de bajos salarios en toda Pensilvania, con salarios no pagados y otros problemas en el trabajo. El personal de admisión habla inglés y español.'
+        },
+        details: {
+          en: ['Pittsburgh office: 1010 Western Avenue, Suite 300, Pittsburgh, PA 15233', 'Pittsburgh: 412-701-4368', 'Intake: Monday, Wednesday, Thursday, and Friday, 9:00 a.m. to 5:00 p.m.'],
+          es: ['Oficina de Pittsburgh: 1010 Western Avenue, Suite 300, Pittsburgh, PA 15233', 'Pittsburgh: 412-701-4368', 'Admisión: lunes, miércoles, jueves y viernes, de 9:00 a.m. a 5:00 p.m.']
+        },
+        phone: '1-800-729-1607',
+        url: 'https://www.justiceatworklegalaid.org/',
+        checked: null
+      },
+      {
+        group: 'legal',
+        name: { en: 'Neighborhood Legal Services', es: 'Neighborhood Legal Services (Servicios Legales Vecinales)' },
+        description: {
+          en: 'Free civil legal aid, including help with wage claims, for people with low incomes in Allegheny, Beaver, Butler, and Lawrence counties.',
+          es: 'Ayuda legal civil gratuita, incluida ayuda con reclamos de salario, para personas de bajos ingresos en los condados de Allegheny, Beaver, Butler y Lawrence.'
+        },
+        details: {
+          en: ['928 Penn Avenue, Pittsburgh, PA 15222'],
+          es: ['928 Penn Avenue, Pittsburgh, PA 15222']
+        },
+        phone: '1-866-761-6572',
+        url: 'https://nlsa.us/',
+        checked: null
+      },
+      {
+        group: 'legal',
+        name: { en: 'Allegheny County Bar Association Lawyer Referral Service', es: 'Servicio de Referencia de Abogados del Colegio de Abogados del Condado de Allegheny' },
+        description: {
+          en: 'Connects you with a private lawyer. The first consultation, up to 30 minutes, is free. After that, the lawyer may charge a fee.',
+          es: 'Le pone en contacto con un abogado privado. La primera consulta, de hasta 30 minutos, es gratis. Después, el abogado puede cobrar.'
+        },
+        phone: '412-261-5555',
+        url: 'https://www.getapittsburghlawyer.com/',
+        checked: null
+      },
+      {
+        group: 'centers',
+        name: { en: 'Casa San José', es: 'Casa San José' },
+        description: {
+          en: 'A community resource center for Latino families in Pittsburgh. Staff speak Spanish and can connect you with other services, including legal referrals.',
+          es: 'Un centro comunitario de recursos para familias latinas en Pittsburgh. El personal habla español y puede conectarle con otros servicios, incluidas referencias legales.'
+        },
+        details: {
+          en: ['Beechview, Pittsburgh'],
+          es: ['Beechview, Pittsburgh']
+        },
+        phone: '412-343-3111',
+        url: 'https://casasanjose.org/',
+        checked: null
+      },
+
+      // To add more groups, copy this template, remove the //, and fill it
+      // in. Use group: 'legal' for legal aid, 'centers' for worker centers.
       // {
       //   group: 'centers',
       //   name: { en: '', es: '' },
