@@ -54,6 +54,11 @@ body {
   background: var(--paper);
   overflow-x: hidden;
 }
+/* iPhone Safari ignores overflow-x on body alone, so stop sideways scrolling here too */
+html, body { overflow-x: clip; }
+/* Long words (common in Spanish) wrap instead of pushing boxes wider than the screen */
+h1, h2, h3, h4, p, li, label, legend, dt, dd, td, th, .btn { overflow-wrap: break-word; }
+.btn { max-width: 100%; }
 
 img { max-width: 100%; height: auto; }
 h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 .5em; letter-spacing: -0.015em; }
@@ -473,7 +478,7 @@ main:focus { outline: none; }
 .field-set legend { font-weight: 800; font-size: 1.2rem; margin-bottom: 12px; padding: 0; }
 
 /* Answer tiles: real radio buttons, styled as big tappable cards */
-.tiles { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+.tiles { display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .tile { position: relative; }
 .tile-input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .tile label {
@@ -507,7 +512,13 @@ main:focus { outline: none; }
   border: 2px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--white);
   font-size: 1.15rem; font-variant-numeric: tabular-nums;
   -webkit-appearance: none; appearance: none;
+  display: block; min-width: 0; max-width: 100%;
 }
+/* iPhone gives date and time boxes a built-in minimum width and centers the
+   text, which pushes them out of their column. Let them shrink and line up. */
+.field input[type="date"], .field input[type="time"] { min-inline-size: 0; line-height: 1.4; }
+.field input::-webkit-date-and-time-value { text-align: left; min-height: 1.4em; margin: 0; }
+.field input::-webkit-datetime-edit { padding: 0; }
 .field select {
   background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%);
   background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
@@ -560,7 +571,7 @@ fieldset.has-error .tile label { border-color: var(--error); }
 .entry-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
 .entry-title { font-size: 1.15rem; font-weight: 800; margin: 0; }
 .entry-grid { display: grid; gap: 0 14px; }
-.shift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.shift-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; }
 .shift-grid .field-date, .shift-grid .field-breakMinutes { grid-column: 1 / -1; }
 .shift-live {
   font-weight: 800; margin: -4px 0 10px; font-variant-numeric: tabular-nums;
@@ -604,7 +615,7 @@ fieldset.has-error .tile label { border-color: var(--error); }
 .week-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .week-table thead { display: none; }
 .week-table tbody tr {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px;
   border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 10px; background: var(--paper);
 }
 .week-table tbody th { grid-column: 1 / -1; text-align: left; font-size: 1.1rem; padding-bottom: 4px; }
@@ -656,6 +667,20 @@ fieldset.has-error .tile label { border-color: var(--error); }
 
 .print-sheet { display: none; }
 
+/* Small phones, and iPhones with Display Zoom or larger text turned on
+   (these report a screen about 320px wide): one answer per row */
+@media (max-width: 379px) {
+  .tiles, .shift-grid { grid-template-columns: minmax(0, 1fr); }
+  .calc-card { padding-inline: 14px; }
+  .result-banner, .result-body { padding-inline: 16px; }
+  .next-steps li { padding-left: 58px; }
+}
+/* Phones: give the start and end time boxes room for "06:30 AM" */
+@media (max-width: 759px) {
+  .shift-grid { gap: 0 8px; }
+  .shift-grid input[type="time"] { padding-inline: 10px; font-size: 1.05rem; }
+}
+
 /* ================================================== Wider screens */
 
 @media (min-width: 560px) {
@@ -667,11 +692,11 @@ fieldset.has-error .tile label { border-color: var(--error); }
   .result-actions { flex-direction: row; flex-wrap: wrap; align-items: center; }
   .result-actions .btn { width: auto; }
   .result-actions .link-btn { margin-left: auto; }
-  .entry-grid { grid-template-columns: 1fr 1fr; }
-  .entry-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .entry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .entry-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .entry-grid-1 { grid-template-columns: minmax(0, 360px); }
-  .checks { grid-template-columns: 1fr 1fr; }
-  .summary-grid { grid-template-columns: 1fr 1fr; }
+  .checks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .summary-grid .field-wide { grid-column: 1 / -1; }
   .btn-add { width: auto; }
 }
@@ -700,13 +725,13 @@ fieldset.has-error .tile label { border-color: var(--error); }
   .week-table .is-short::after { margin-left: auto; }
 
   .steps-row, .check-cards { grid-template-columns: repeat(3, 1fr); }
-  .form-cards { grid-template-columns: 1fr 1fr; }
-  .resource-grid { grid-template-columns: 1fr 1fr; }
+  .form-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stats-list { grid-template-columns: repeat(3, 1fr); gap: 40px; }
   .stat { border-top: 4px solid var(--gold); }
-  .diff-grid { grid-template-columns: 1fr 1fr; gap: 0 56px; }
+  .diff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
   .footer-inner { grid-template-columns: 1.2fr 1fr 1.6fr; gap: 48px; }
-  .two-col { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; }
 }
 
 @media (min-width: 960px) {
